@@ -1,0 +1,32 @@
+namespace DDSettings.Rpc;
+
+enum SettingsType: byte {
+    Bool,
+    Int8,
+    Uint8,
+    Int16,
+    Uint16,
+    Int32,
+    Uint32,
+    Int64,
+    Uint64,
+    Float,
+    String
+}
+
+table SettingsValue {
+    hash: uint32;
+    type: SettingsType;
+    size: uint32;
+    value: [ubyte];
+}
+
+table SettingsComponentValues {
+    component_name: string;
+    component_hash: uint64;
+    values: [SettingsValue];
+}
+
+table SettingsValuesAll {
+    components: [SettingsComponentValues];
+}
